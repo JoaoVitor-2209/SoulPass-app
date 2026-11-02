@@ -12,10 +12,8 @@ interface LinkButtonProps {
 }
 
 const variantes: Record<Variante, string> = {
-  primaria:
-    "bg-soulup-500 text-white hover:bg-soulup-700 focus-visible:outline-soulup-900",
-  secundaria:
-    "bg-white text-soulup-700 border border-soulup-500 hover:bg-soulup-100",
+  primaria: "botao-principal",
+  secundaria: "botao-secundario",
   fantasma: "bg-transparent text-soulup-700 hover:bg-soulup-100",
 };
 
@@ -30,7 +28,7 @@ export default function LinkButton({
   externo = false,
   className = "",
 }: LinkButtonProps) {
-  const classes = `inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors duration-200 ${variantes[variante]} ${className}`;
+  const classes = `botao-base ${variantes[variante]} ${className}`;
 
   if (externo) {
     return (

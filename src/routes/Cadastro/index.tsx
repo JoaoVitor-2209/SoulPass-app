@@ -1,44 +1,48 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { Link, useNavigate } from "react-router";
 import { PageHero } from "../../components/PageHero";
 import { FormField } from "../../components/FormField";
 import { Button } from "../../components/Button";
-import { cadastrarUsuario } from "../../services/authService";
+import { cadastrar } from "../../services/usuarioService";
+import { useAuth } from "../../context/auth";
+import { cpfValido, mensagemErro } from "../../utils/formatar";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import type { CadastroFormValues } from "../../types";
 import imgCadastro from "../../assets/hero/img-cadastro.png";
 
-const inputClasses =
-  "w-full rounded-xl border border-soulup-100 bg-white px-4 py-3 text-sm text-soulup-900 outline-none transition-colors placeholder:text-soulup-900/40 focus:border-soulup-500";
+const inputClasses = "campo-formulario";
 
 /**
  * Página de cadastro — migrada de paginas/login/cadastro.html.
  * Usa React Hook Form com validação de nome, e-mail, senha e confirmação
  * de senha (comparação de campos via watch/validate). Ao concluir,
- * redireciona para o login com useNavigate.
+ * recebe os dados da API e abre o painel com useNavigate.
  */
 export default function Cadastro() {
   useDocumentTitle("Cadastro");
   const navigate = useNavigate();
+  const { iniciarSessao } = useAuth();
   const [erroCadastro, setErroCadastro] = useState("");
 
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<CadastroFormValues>({ mode: "onBlur" });
 
-  const senha = watch("senha");
+  const senha = useWatch({ control, name: "senha" });
 
   async function onSubmit(dados: CadastroFormValues) {
     setErroCadastro("");
     try {
-      await cadastrarUsuario(dados);
-      navigate("/login", { replace: true });
-    } catch {
-      setErroCadastro("Não foi possível concluir seu cadastro agora. Tente novamente.");
+      const resposta = await cadastrar({ nome: dados.nome.trim(), idade: dados.idade,
+        cpf: Number(dados.cpf.replace(/\D/g, "")), email: dados.email.trim(), senha: dados.senha });
+      iniciarSessao(resposta);
+      navigate("/app", { replace: true });
+    } catch (erro) {
+      setErroCadastro(mensagemErro(erro));
     }
   }
 
@@ -72,6 +76,18 @@ export default function Cadastro() {
               />
             </FormField>
 
+            <FormField label="Idade" htmlFor="idade" erro={errors.idade?.message}>
+              <input id="idade" type="number" className={inputClasses} aria-invalid={Boolean(errors.idade)}
+                {...register("idade", { valueAsNumber: true, required: "Informe a idade.",
+                  min: { value: 1, message: "Informe uma idade válida." },
+                  max: { value: 120, message: "Confira a idade informada." },
+                  validate: n => Number.isInteger(n) || "Informe uma idade inteira." })} />
+            </FormField>
+            <FormField label="CPF" htmlFor="cpf" erro={errors.cpf?.message}>
+              <input id="cpf" inputMode="numeric" maxLength={14} className={inputClasses}
+                aria-invalid={Boolean(errors.cpf)} placeholder="Somente números"
+                {...register("cpf", { required: "Informe o CPF.", validate: c => cpfValido(c) || "Informe um CPF válido." })} />
+            </FormField>
             <FormField label="E-mail" htmlFor="email" erro={errors.email?.message}>
               <input
                 id="email"
@@ -92,6 +108,7 @@ export default function Cadastro() {
             <FormField label="Senha" htmlFor="senha" erro={errors.senha?.message}>
               <input
                 id="senha"
+                autoComplete="new-password"
                 type="password"
                 placeholder="Mínimo 5 caracteres"
                 className={inputClasses}
@@ -111,6 +128,7 @@ export default function Cadastro() {
             >
               <input
                 id="confirmarSenha"
+                autoComplete="new-password"
                 type="password"
                 placeholder="Digite a senha novamente"
                 className={inputClasses}
@@ -144,3 +162,4 @@ export default function Cadastro() {
     </>
   );
 }
+

@@ -30,20 +30,22 @@ const WATSON_SCRIPT_ID = "watson-assistant-chat-entry";
  */
 export function useWatsonAssistant(): void {
   useEffect(() => {
+    if (import.meta.env.VITE_WATSON_ENABLED === "false") return;
     if (document.getElementById(WATSON_SCRIPT_ID)) {
       return;
     }
 
     window.watsonAssistantChatOptions = {
-      integrationID: "e3b7d962-7de4-4105-9fcc-2645dd6f580d",
-      region: "https://integrations.us-south.assistant.watson.appdomain.cloud",
-      serviceInstanceID: "17b1816c-9ace-4e29-9af9-9b91c042aacf",
+      integrationID: import.meta.env.VITE_WATSON_INTEGRATION_ID || "e3b7d962-7de4-4105-9fcc-2645dd6f580d",
+      region: import.meta.env.VITE_WATSON_REGION || "https://integrations.us-south.assistant.watson.appdomain.cloud",
+      serviceInstanceID: import.meta.env.VITE_WATSON_SERVICE_INSTANCE_ID || "17b1816c-9ace-4e29-9af9-9b91c042aacf",
       onLoad: async (instance) => {
         await instance.render();
       },
     };
 
     const timer = setTimeout(() => {
+      if (document.getElementById(WATSON_SCRIPT_ID)) return;
       const script = document.createElement("script");
       script.id = WATSON_SCRIPT_ID;
       script.src =
@@ -56,3 +58,4 @@ export function useWatsonAssistant(): void {
     return () => clearTimeout(timer);
   }, []);
 }
+

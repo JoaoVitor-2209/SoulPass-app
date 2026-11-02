@@ -8,10 +8,8 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantes: Record<Variante, string> = {
-  primaria:
-    "bg-soulup-500 text-white hover:bg-soulup-700 focus-visible:outline-soulup-900",
-  secundaria:
-    "bg-white text-soulup-700 border border-soulup-500 hover:bg-soulup-100",
+  primaria: "botao-principal",
+  secundaria: "botao-secundario",
   fantasma: "bg-transparent text-soulup-700 hover:bg-soulup-100",
 };
 
@@ -27,7 +25,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-60 ${variantes[variante]} ${className}`}
+      className={`botao-base ${variantes[variante]} ${className}`}
       {...rest}
     >
       {children}

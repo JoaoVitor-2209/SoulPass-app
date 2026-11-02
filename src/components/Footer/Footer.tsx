@@ -5,6 +5,8 @@ import iconeYoutube from "../../assets/icones/youtube.png";
  * Rodapé padrão reutilizado em todas as páginas, com links externos
  * para o GitHub e o canal do YouTube do projeto.
  */
+const anoAtual = new Date().getFullYear();
+
 export default function Footer() {
   return (
     <footer className="mt-16 bg-soulup-900 text-white">
@@ -31,9 +33,10 @@ export default function Footer() {
         </div>
         <div className="h-px w-24 bg-white/20" aria-hidden="true" />
         <p className="text-sm text-white/70">
-          SoulPass · Todos os direitos reservados · &copy; · {new Date().getFullYear()}
+          SoulPass · Todos os direitos reservados · &copy; · {anoAtual}
         </p>
       </div>
     </footer>
   );
 }
+

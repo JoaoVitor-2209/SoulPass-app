@@ -17,12 +17,37 @@ import Login from "./routes/Login";
 import Cadastro from "./routes/Cadastro";
 import NotFound from "./routes/NotFound";
 
+import { AuthProvider } from "./context/AuthContext";
+import LayoutPainel from "./components/Painel/LayoutPainel";
+import Painel from "./routes/Painel";
+import Caminhadas from "./routes/Caminhadas";
+import CaminhadaDetalhe from "./routes/CaminhadaDetalhe";
+import Carteira from "./routes/Carteira";
+import Bilhete from "./routes/Bilhete";
+import Historico from "./routes/Historico";
+import Perfil from "./routes/Perfil";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     errorElement: <NotFound />,
     children: [
+      {
+        path: "app",
+        element: <LayoutPainel />,
+        errorElement: <NotFound />,
+        children: [
+          { index: true, element: <Painel /> },
+          { path: "caminhadas", element: <Caminhadas /> },
+          { path: "caminhadas/:id", element: <CaminhadaDetalhe /> },
+          { path: "carteira", element: <Carteira /> },
+          { path: "bilhete", element: <Bilhete /> },
+          { path: "historico", element: <Historico /> },
+          { path: "perfil", element: <Perfil /> },
+          { path: "*", element: <NotFound /> },
+        ],
+      },
       { index: true, element: <Home /> },
       { path: "sobre", element: <Sobre /> },
       { path: "faq", element: <Faq /> },
@@ -41,6 +66,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 );

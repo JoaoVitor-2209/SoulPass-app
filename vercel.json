@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://soulpass-api.onrender.com/:path*" },
+    { "source": "/((?!api(?:/|$)).*)", "destination": "/index.html" }
+  ]
+}
