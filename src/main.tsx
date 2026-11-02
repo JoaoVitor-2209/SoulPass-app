@@ -22,6 +22,10 @@ import LayoutPainel from "./components/Painel/LayoutPainel";
 import Painel from "./routes/Painel";
 import Caminhadas from "./routes/Caminhadas";
 import CaminhadaDetalhe from "./routes/CaminhadaDetalhe";
+import Carteira from "./routes/Carteira";
+import Bilhete from "./routes/Bilhete";
+import Historico from "./routes/Historico";
+import Perfil from "./routes/Perfil";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +41,10 @@ const router = createBrowserRouter([
           { index: true, element: <Painel /> },
           { path: "caminhadas", element: <Caminhadas /> },
           { path: "caminhadas/:id", element: <CaminhadaDetalhe /> },
+          { path: "carteira", element: <Carteira /> },
+          { path: "bilhete", element: <Bilhete /> },
+          { path: "historico", element: <Historico /> },
+          { path: "perfil", element: <Perfil /> },
           { path: "*", element: <NotFound /> },
         ],
       },
