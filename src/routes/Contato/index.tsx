@@ -1,15 +1,15 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { useForm } from "react-hook-form";
 import { PageHero } from "../../components/PageHero";
 import { FormField } from "../../components/FormField";
 import { Button } from "../../components/Button";
-import { enviarContato } from "../../services/contatoService";
+import { prepararMensagem } from "../../services/contatoService";
 import { useDocumentTitle } from "../../hooks/useDocumentTitle";
 import type { ContatoFormValues, FormStatus } from "../../types";
 import imgPhones from "../../assets/hero/img-phones.png";
 
-const inputClasses =
-  "w-full rounded-xl border border-soulup-100 bg-white px-4 py-3 text-sm text-soulup-900 outline-none transition-colors placeholder:text-soulup-900/40 focus:border-soulup-500";
+const inputClasses = "campo-formulario";
 
 /**
  * Página de contato — migrada de paginas/informacao/contato.html.
@@ -18,20 +18,20 @@ const inputClasses =
  */
 export default function Contato() {
   useDocumentTitle("Contato");
+  const [rascunho, setRascunho] = useState("");
   const [status, setStatus] = useState<FormStatus>("idle");
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors, isSubmitting },
   } = useForm<ContatoFormValues>({ mode: "onBlur" });
 
   async function onSubmit(dados: ContatoFormValues) {
     try {
-      await enviarContato(dados);
+      setRascunho(prepararMensagem(dados));
       setStatus("success");
-      reset();
+
     } catch {
       setStatus("error");
     }
@@ -42,8 +42,7 @@ export default function Contato() {
       <PageHero titulo="Entre em contato" imagem={imgPhones} imagemAlt="Celulares com a interface do SoulPass">
         <p>Dúvida, problema com pontos ou uma sugestão? Estamos aqui para ouvir.</p>
         <p>
-          Preencha o formulário e nossa equipe responde em até 2 dias úteis —
-          nada cai no vazio por aqui.
+          Preencha o formulário para preparar sua mensagem. Depois, entre em contato pelos perfis dos integrantes.
         </p>
       </PageHero>
 
@@ -123,10 +122,10 @@ export default function Contato() {
                   type="checkbox"
                   className="mt-1 h-4 w-4 rounded border-soulup-500 text-soulup-500 focus:ring-soulup-500"
                   {...register("termos", {
-                    required: "É necessário aceitar os termos para enviar.",
+                    required: "Confirme a revisão da mensagem.",
                   })}
                 />
-                Li e concordo com os termos de uso e política de privacidade
+                Revisei os dados da mensagem que desejo preparar
               </label>
               {errors.termos ? (
                 <span role="alert" className="mt-1 block text-xs font-medium text-red-600">
@@ -136,17 +135,23 @@ export default function Contato() {
             </div>
 
             <Button type="submit" disabled={isSubmitting} className="w-full">
-              {isSubmitting ? "Enviando..." : "Enviar mensagem"}
+              {isSubmitting ? "Preparando..." : "Preparar mensagem"}
             </Button>
 
             {status === "success" ? (
               <p role="status" className="rounded-xl bg-green-50 px-4 py-3 text-sm font-medium text-green-700">
-                ✅ Mensagem enviada com sucesso! Retornaremos em até 2 dias úteis.
+                Mensagem preparada. Ela ainda não foi enviada. Copie o texto abaixo e use um dos canais da equipe.
               </p>
+            ) : null}
+            {rascunho ? (
+              <FormField label="Rascunho da mensagem" htmlFor="rascunho" obrigatorio={false}>
+                <textarea id="rascunho" rows={7} readOnly value={rascunho} className="campo-formulario" />
+                <Link className="usuario-link" to="/integrantes">Ver canais dos integrantes</Link>
+              </FormField>
             ) : null}
             {status === "error" ? (
               <p role="alert" className="rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
-                Não foi possível enviar sua mensagem agora. Tente novamente em instantes.
+                Não foi possível preparar sua mensagem agora. Tente novamente em instantes.
               </p>
             ) : null}
           </form>
@@ -155,3 +160,4 @@ export default function Contato() {
     </>
   );
 }
+

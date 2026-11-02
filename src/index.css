@@ -13,12 +13,12 @@
   --color-soulup-900: #2a0a3d;
 
   --color-ink: #1a0a24;
-  --color-paper: #faf7fb;
+  --color-paper: #f8f7fc;
 
   --font-display: "Poppins", "Noto Sans", sans-serif;
   --font-body: "Noto Sans", sans-serif;
 
-  --breakpoint-xs: 30rem;    /* 480px */
+  --breakpoint-xs: 30rem; /* 480px */
   --breakpoint-tablet: 48rem; /* 768px */
   --breakpoint-desktop: 62rem; /* 992px */
 }
@@ -32,7 +32,10 @@
     color: var(--color-ink);
     background-color: var(--color-paper);
   }
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
   }
   :focus-visible {
@@ -42,10 +45,1015 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Sprint 4: estilos globais das telas integradas à API. */
+@layer components {
+  .lista-dividida {
+    @apply divide-y divide-soulup-100;
+  }
+  .linha-distribuida {
+    @apply flex flex-wrap items-center justify-between gap-3;
+  }
+  .item-percurso {
+    @apply flex flex-wrap items-center justify-between gap-3 py-5;
+  }
+  .item-atividade {
+    @apply flex items-center justify-between gap-4 border-t border-soulup-100 pt-4;
+  }
+  .grafico-coluna {
+    @apply flex min-w-0 flex-1 flex-col items-center gap-2;
+  }
+  .texto-forte {
+    @apply font-bold;
+  }
+  .texto-semidestaque {
+    @apply font-semibold;
+  }
+  .grade-resumo {
+    @apply grid gap-4 sm:grid-cols-2 xl:grid-cols-4;
+  }
+  .grade-campos {
+    @apply grid gap-5 sm:grid-cols-2;
+  }
+  .grade-dupla {
+    @apply grid gap-6 lg:grid-cols-2;
+  }
+  .grade-formulario {
+    @apply grid items-start gap-6 xl:grid-cols-3;
+  }
+  .largura-formulario {
+    @apply max-w-2xl;
+  }
+  .rotulo-filtro {
+    @apply mb-2 block text-sm font-semibold;
+  }
+  .cabecalho-lista {
+    @apply mb-5 flex flex-wrap items-center justify-between gap-3;
+  }
+  .titulo-listagem {
+    @apply mb-5 text-lg font-bold;
+  }
+  .grade-totais {
+    @apply mb-6 grid gap-4 sm:grid-cols-2;
+  }
+  .filtro-historico {
+    @apply mb-6 max-w-xs;
+  }
+  .coluna-listagem {
+    @apply min-w-0 xl:col-span-2;
+  }
+  .valor-previa {
+    @apply mt-1 font-bold;
+  }
+  .credito-previa {
+    @apply mt-1 text-lg font-bold;
+  }
+  .data-registro {
+    @apply mt-1 text-xs text-soulup-900/60;
+  }
+  .valor-bilhete {
+    @apply mt-2 text-2xl font-bold;
+  }
+  .valor-bilhete-grande {
+    @apply mt-2 text-3xl font-bold;
+  }
+  .descricao-cartao {
+    @apply mt-2 text-sm leading-relaxed text-soulup-900/75;
+  }
+  .ajuda-campo {
+    @apply mt-2 text-xs text-soulup-900/60;
+  }
+  .valor-total {
+    @apply mt-3 text-3xl font-bold;
+  }
+  .valor-total-pontos {
+    @apply mt-3 text-3xl font-bold text-emerald-700;
+  }
+  .meta-distancia {
+    @apply mt-3 text-sm text-soulup-900/75;
+  }
+  .detalhe-resumo {
+    @apply mt-3 text-xs leading-relaxed text-soulup-900/60;
+  }
+  .grade-previa {
+    @apply mt-4 grid gap-3 text-sm sm:grid-cols-2;
+  }
+  .progresso-meta {
+    @apply mt-4 h-3 w-full accent-soulup-700;
+  }
+  .titulo-conquista {
+    @apply mt-4 text-2xl font-bold;
+  }
+  .valor-resumo {
+    @apply mt-4 text-3xl font-bold text-soulup-900;
+  }
+  .descricao-meta {
+    @apply mt-4 text-sm leading-relaxed text-soulup-900/60;
+  }
+  .descricao-dialogo {
+    @apply mt-4 text-sm leading-relaxed text-soulup-900/75;
+  }
+  .descricao-destaque {
+    @apply mt-4 text-sm leading-relaxed text-white/80;
+  }
+  .saldo-equivalente {
+    @apply mt-4 text-sm text-white/80;
+  }
+  .lista-atividades {
+    @apply mt-5 space-y-4;
+  }
+  .saldo-pontos {
+    @apply mt-5 text-4xl font-bold;
+  }
+  .distancia-percurso {
+    @apply mt-5 text-5xl font-bold text-soulup-700;
+  }
+  .data-percurso {
+    @apply mt-5 text-sm text-soulup-900/75;
+  }
+  .regra-pontos {
+    @apply mt-5 text-xs leading-relaxed text-soulup-900/60;
+  }
+  .acoes-dialogo {
+    @apply mt-6 flex flex-wrap justify-end gap-3;
+  }
+  .grade-painel {
+    @apply mt-6 grid gap-6 xl:grid-cols-3;
+  }
+  .link-destaque {
+    @apply mt-6 inline-block rounded-full bg-white px-4 py-3 text-sm font-bold text-soulup-900;
+  }
+  .link-gerenciar {
+    @apply mt-6 inline-block text-sm font-semibold text-soulup-700;
+  }
+  .bilhete-visual {
+    @apply mt-6 rounded-2xl bg-gradient-to-br from-soulup-900 to-soulup-700 p-7 text-white;
+  }
+  .caixa-previa {
+    @apply mt-6 rounded-xl border border-soulup-100 bg-soulup-100/40 p-5;
+  }
+  .formulario-conversao {
+    @apply mt-6 space-y-4;
+  }
+  .formulario-painel {
+    @apply mt-6 space-y-5;
+  }
+  .etapas-bilhete {
+    @apply mt-6 space-y-6 text-sm leading-relaxed text-soulup-900/75;
+  }
+  .observacao-historico {
+    @apply mt-6 text-sm leading-relaxed text-soulup-900/60;
+  }
+  .titulo-meta {
+    @apply mt-6 text-xl font-bold;
+  }
+  .observacao-bilhete {
+    @apply mt-6 text-xs leading-relaxed text-soulup-900/60;
+  }
+  .observacao-destaque {
+    @apply mt-6 text-xs leading-relaxed text-white/70;
+  }
+  .saldo-bilhete-secao {
+    @apply mt-8 border-t border-white/20 pt-5;
+  }
+  .grafico-semana {
+    @apply mt-8 flex items-end justify-between gap-2;
+  }
+  .bilhete-rodape {
+    @apply mt-8 flex items-end justify-between gap-4;
+  }
+  .botao-excluir {
+    @apply mt-8 rounded-xl border border-red-300 px-5 py-3 text-sm font-semibold text-red-700 hover:bg-red-50;
+  }
+  .bilhete-numero {
+    @apply mt-8 text-2xl font-bold tracking-widest;
+  }
+  .nota-bilhete {
+    @apply mt-8 text-xs leading-relaxed text-soulup-900/60;
+  }
+  .selo-meta {
+    @apply rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700;
+  }
+  .selo-bilhete {
+    @apply rounded-full bg-white/15 px-3 py-1 text-xs font-semibold;
+  }
+  .texto-acessivel {
+    @apply sr-only;
+  }
+  .grafico-dia {
+    @apply text-[10px] text-soulup-900/60;
+  }
+  .grafico-valor {
+    @apply text-[11px] font-semibold;
+  }
+  .unidade-saldo {
+    @apply text-base;
+  }
+  .titulo-cartao {
+    @apply text-lg font-bold;
+  }
+  .pontos-historico {
+    @apply text-lg font-bold text-emerald-700;
+  }
+  .rotulo-previa {
+    @apply text-soulup-900/75;
+  }
+  .titulo-atividade {
+    @apply text-sm font-bold;
+  }
+  .nome-atividade {
+    @apply text-sm font-semibold;
+  }
+  .texto-informativo {
+    @apply text-sm leading-relaxed text-soulup-900/75;
+  }
+  .numero-etapa {
+    @apply text-soulup-700;
+  }
+  .unidade-distancia {
+    @apply text-xl;
+  }
+  .titulo-dialogo {
+    @apply text-xl font-bold;
+  }
+  .link-historico {
+    @apply text-xs font-bold text-soulup-700;
+  }
+  .rotulo-resumo {
+    @apply text-xs font-semibold uppercase tracking-wide text-soulup-900/60;
+  }
+  .rotulo-percurso {
+    @apply text-xs font-semibold uppercase tracking-widest text-soulup-900/60;
+  }
+  .rotulo-bilhete {
+    @apply text-xs font-semibold uppercase tracking-widest text-white/70;
+  }
+  .rotulo-saldo-bilhete {
+    @apply text-xs text-white/70;
+  }
+  .rotulo-total {
+    @apply text-xs uppercase tracking-wide text-soulup-900/60;
+  }
+  .rotulo-destaque {
+    @apply text-xs uppercase tracking-widest text-white/70;
+  }
+  .pontos-atividade {
+    @apply whitespace-nowrap text-sm font-bold text-emerald-700;
+  }
+  .coluna-ampla {
+    @apply xl:col-span-2;
+  }
+
+  /* Campos e botões no mesmo padrão dos componentes originais. */
+  .campo-formulario {
+    @apply w-full rounded-xl border border-soulup-100 bg-white px-4 py-3 text-sm text-soulup-900 outline-none transition-colors placeholder:text-soulup-900/40 focus:border-soulup-500 disabled:cursor-not-allowed disabled:bg-soulup-100/50;
+  }
+  .botao-principal {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-soulup-700 px-5 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-soulup-900 focus-visible:outline-soulup-900 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .botao-secundario {
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-soulup-300 hover:bg-soulup-100/40 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .botao-perigo {
+    @apply bg-red-700 hover:bg-red-800;
+  }
+  .botao-largo {
+    @apply w-full;
+  }
+  .margem-superior {
+    @apply mt-6;
+  }
+  .margem-superior-media {
+    @apply mt-5;
+  }
+  .margem-superior-curta {
+    @apply mt-3;
+  }
+  .campo-somente-leitura {
+    @apply bg-soulup-100/30;
+  }
+  .cartao-padrao {
+    @apply rounded-2xl border border-slate-200/70 bg-white p-6 shadow-sm shadow-soulup-900/3;
+  }
+  .painel-cartao {
+    @apply min-w-0;
+  }
+  .cartao-destaque {
+    @apply border-soulup-700 bg-soulup-700 text-white;
+  }
+  .painel-titulo {
+    @apply mb-8 flex flex-wrap items-start justify-between gap-4;
+  }
+  .painel-titulo h1 {
+    @apply text-2xl font-bold tracking-tight text-soulup-900 xs:text-3xl;
+  }
+  .painel-titulo p {
+    @apply mt-3 max-w-2xl text-sm leading-relaxed text-soulup-900/75;
+  }
+  .aviso {
+    @apply my-4 rounded-xl border px-4 py-3 text-sm leading-relaxed;
+  }
+  .aviso-erro {
+    @apply border-red-200 bg-red-50 text-red-800;
+  }
+  .aviso-sucesso {
+    @apply border-emerald-200 bg-emerald-50 text-emerald-800;
+  }
+  .aviso-info {
+    @apply border-soulup-100 bg-soulup-100/50 text-soulup-900;
+  }
+  .painel-carregando {
+    @apply rounded-2xl border border-soulup-100 bg-white p-8 text-sm text-soulup-900/75;
+  }
+  .painel-vazio {
+    @apply rounded-xl border border-dashed border-soulup-300/40 bg-soulup-100/30 p-6 text-center text-sm leading-relaxed text-soulup-900/75;
+  }
+  .dialogo-confirmacao {
+    @apply m-auto w-[calc(100%-2rem)] max-w-md rounded-2xl p-6 text-soulup-900 shadow-xl;
+  }
+  .dialogo-confirmacao::backdrop {
+    @apply bg-soulup-900/40;
+  }
+  .grafico-base {
+    @apply h-32 w-full max-w-12;
+  }
+  .grafico-fundo {
+    fill: var(--color-soulup-100);
+  }
+  .grafico-preenchimento {
+    fill: var(--color-soulup-700);
+  }
+
+  .usuario-avatar {
+    @apply flex size-10 shrink-0 items-center justify-center rounded-full bg-soulup-100 font-bold text-soulup-700;
+  }
+  .pular-conteudo {
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:p-3;
+  }
+}
+
+/* Visual da referência SoulPass: CSS único, com dados e fluxos reais. */
+@layer components {
+  .icone {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+  }
+  .botao-base {
+    @apply inline-flex items-center justify-center gap-2 transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .marca {
+    @apply inline-flex shrink-0 items-center gap-2.5 text-xl font-bold tracking-tight text-soulup-900;
+  }
+  .marca-pass {
+    @apply text-soulup-500;
+  }
+  .marca-simbolo {
+    @apply flex size-10 items-center justify-center rounded-xl bg-soulup-700 text-white;
+  }
+  .marca-onibus {
+    width: 1.65rem;
+    height: 1.65rem;
+    object-fit: contain;
+  }
+  .marca-simbolo .icone {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+  .site-cabecalho {
+    @apply sticky top-0 z-40 border-b border-slate-100 bg-white;
+  }
+  .site-cabecalho-conteudo {
+    @apply relative mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3;
+    min-height: 4rem;
+  }
+  .site-menu-botao,
+  .app-menu-botao {
+    @apply inline-flex size-11 items-center justify-center rounded-xl border border-slate-200 text-soulup-700;
+  }
+  .site-menu {
+    @apply absolute inset-x-0 top-full hidden flex-col gap-1 border-b border-slate-100 bg-white p-4 shadow-lg;
+  }
+  .site-menu-aberto {
+    @apply flex;
+  }
+  .site-menu-link {
+    @apply block rounded-full px-4 py-2.5 text-sm font-semibold text-slate-600 transition-colors hover:bg-soulup-100/50 hover:text-soulup-700;
+  }
+  .site-menu-ativo {
+    @apply bg-soulup-100/60 text-soulup-700;
+  }
+  .site-menu-acesso {
+    @apply block rounded-xl bg-soulup-700 px-5 py-2.5 text-center text-sm font-semibold text-white hover:bg-soulup-900;
+  }
+  .site-rodape {
+    @apply mt-10 border-t border-slate-200/70 px-6 py-8 text-center text-xs text-slate-500;
+  }
+  .site-rodape-links {
+    @apply mb-5 flex justify-center gap-6;
+  }
+  .site-rodape-links a {
+    @apply inline-flex items-center gap-2 font-semibold hover:text-soulup-700;
+  }
+  .site-rodape-links img {
+    @apply size-4 object-contain;
+    filter: brightness(0);
+    opacity: 0.55;
+  }
+  .inicio-hero {
+    @apply mx-auto grid max-w-6xl items-center gap-10 px-6 pt-12 pb-8;
+  }
+  .inicio-selo {
+    @apply inline-flex items-center gap-2 rounded-full border border-soulup-300/15 bg-soulup-100/40 px-3.5 py-2 text-[10px] font-bold uppercase tracking-[0.14em] text-soulup-700;
+  }
+  .inicio-selo .icone {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+  .inicio-texto h1 {
+    @apply mt-7 font-bold tracking-[-0.045em] text-soulup-900;
+    font-size: clamp(2.5rem, 5.1vw, 3.6rem);
+    line-height: 1.14;
+  }
+  .inicio-texto h1 span {
+    @apply text-soulup-500;
+  }
+  .inicio-descricao {
+    @apply mt-7 max-w-md text-sm leading-7 text-slate-600;
+  }
+  .inicio-acoes {
+    @apply mt-7 flex flex-wrap gap-3;
+  }
+  .inicio-nota {
+    @apply mt-4 max-w-md text-[11px] leading-5 text-slate-500;
+  }
+  .inicio-numeros {
+    @apply mt-8 flex gap-6 border-t border-slate-200/70 pt-6;
+  }
+  .inicio-numeros > div + div {
+    @apply border-l border-slate-200 pl-6;
+  }
+  .inicio-numeros dt {
+    @apply text-xl font-bold text-soulup-900;
+  }
+  .inicio-numeros dd {
+    @apply mt-2 text-[11px] text-slate-500;
+  }
+  .inicio-imagem {
+    @apply relative mx-auto w-full max-w-lg self-end;
+    height: 25rem;
+  }
+  .inicio-arco {
+    @apply absolute right-0 bottom-0 left-6 rounded-t-full bg-soulup-300/20;
+    height: 84%;
+  }
+  .inicio-imagem > img {
+    @apply relative z-10 h-full w-full object-contain object-bottom;
+  }
+  .inicio-mensagem {
+    @apply absolute bottom-8 left-0 z-20 flex max-w-[95%] items-center gap-3 rounded-2xl border border-white/80 bg-white/95 px-4 py-3 shadow-xl shadow-soulup-900/10;
+  }
+  .inicio-mensagem strong {
+    @apply block text-[11px] font-bold text-soulup-900;
+  }
+  .inicio-mensagem p {
+    @apply mt-1 text-[10px] leading-4 text-slate-500;
+  }
+  .inicio-check {
+    @apply flex size-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-600;
+  }
+  .inicio-como {
+    @apply mx-auto max-w-6xl scroll-mt-24 px-6 pt-14 pb-16 text-center;
+  }
+  .inicio-sobretitulo {
+    @apply text-[10px] font-bold uppercase tracking-[0.18em] text-soulup-700;
+  }
+  .inicio-como h2,
+  .inicio-convite h2 {
+    @apply mt-4 text-2xl font-bold tracking-tight text-soulup-900 tablet:text-3xl;
+  }
+  .inicio-etapas {
+    @apply mt-10 grid gap-5 tablet:grid-cols-3;
+  }
+  .inicio-etapas article {
+    @apply relative rounded-2xl border border-slate-200/70 bg-white p-7 text-left;
+  }
+  .inicio-etapas article > .icone {
+    @apply mb-6 text-soulup-700;
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+  .inicio-numero {
+    @apply absolute top-7 right-7 text-xs font-semibold text-soulup-700/50;
+  }
+  .inicio-etapas h3 {
+    @apply text-sm font-bold text-soulup-900;
+  }
+  .inicio-etapas p {
+    @apply mt-3 text-xs leading-6 text-slate-600;
+  }
+  .inicio-convite {
+    @apply mx-6 mb-10 rounded-3xl bg-soulup-100/60 px-6 py-12 text-center;
+  }
+  .inicio-convite > .icone {
+    @apply mx-auto text-soulup-700;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .inicio-convite p {
+    @apply mt-4 mb-7 text-sm text-slate-600;
+  }
+
+  .aplicativo {
+    @apply min-h-screen;
+  }
+  .app-lateral {
+    @apply border-b border-slate-200/70 bg-white;
+  }
+  .app-marca {
+    @apply flex items-center justify-between gap-4 px-5 py-4;
+  }
+  .app-lateral-conteudo {
+    @apply hidden px-4 pb-5;
+  }
+  .app-lateral-aberta {
+    @apply flex flex-col;
+  }
+  .app-menu-rotulo {
+    @apply mb-3 px-3 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-500;
+  }
+  .app-menu {
+    @apply flex flex-col gap-1.5;
+  }
+  .app-menu-link {
+    @apply flex items-center gap-3 rounded-xl px-4 py-3.5 text-[13px] font-medium text-slate-600 transition-colors hover:bg-soulup-100/40 hover:text-soulup-700;
+  }
+  .app-menu-ativo {
+    @apply bg-soulup-700 font-semibold text-white shadow-md shadow-soulup-700/15 hover:bg-soulup-700 hover:text-white;
+  }
+  .app-lateral-base {
+    @apply mt-6;
+  }
+  .app-incentivo {
+    @apply rounded-2xl bg-soulup-100/40 p-5;
+  }
+  .app-incentivo > .icone {
+    @apply mb-4 text-soulup-700;
+  }
+  .app-incentivo strong {
+    @apply block text-xs font-bold text-soulup-900;
+  }
+  .app-incentivo p {
+    @apply mt-2 text-xs leading-5 text-slate-600;
+  }
+  .app-incentivo a {
+    @apply mt-4 inline-flex items-center gap-2 text-[11px] font-bold text-soulup-700;
+  }
+  .app-incentivo a .icone {
+    width: 1rem;
+    height: 1rem;
+  }
+  .app-ajuda {
+    @apply mt-5 flex flex-wrap gap-3 px-2 text-[11px] text-slate-500;
+  }
+  .app-ajuda a:hover {
+    @apply text-soulup-700;
+  }
+  .app-sair {
+    @apply mt-5 inline-flex items-center gap-2 px-2 text-[11px] font-semibold text-slate-600 hover:text-red-700;
+  }
+  .app-sair .icone {
+    width: 1rem;
+    height: 1rem;
+  }
+  .app-principal {
+    @apply flex min-w-0 flex-col;
+  }
+  .app-topo {
+    @apply flex min-h-18 items-center justify-between gap-4 border-b border-slate-200/70 bg-white px-5;
+  }
+  .app-caminho {
+    @apply flex min-w-0 flex-wrap items-center gap-2 text-xs text-slate-500;
+  }
+  .app-caminho span {
+    @apply text-slate-300;
+  }
+  .app-caminho strong {
+    @apply font-medium text-slate-700;
+  }
+  .app-perfil {
+    @apply flex shrink-0 items-center gap-3 text-right;
+  }
+  .app-perfil strong {
+    @apply block max-w-36 truncate text-xs font-semibold text-soulup-900;
+  }
+  .app-perfil small {
+    @apply mt-1 hidden text-[11px] text-slate-500 xs:block;
+  }
+  .app-conteudo {
+    @apply w-full flex-1 px-5 pt-7 pb-10;
+  }
+  .app-rodape {
+    @apply mx-5 flex flex-wrap items-center justify-between gap-4 border-t border-slate-200/70 py-6 text-[11px] leading-5 text-slate-500;
+  }
+  .app-rodape > div {
+    @apply flex flex-wrap gap-4;
+  }
+  .app-rodape a:hover {
+    @apply text-soulup-700;
+  }
+  .painel-boas-vindas {
+    @apply mb-6 flex flex-wrap items-center justify-between gap-4;
+  }
+  .painel-boas-vindas p {
+    @apply text-[13px] text-slate-600;
+  }
+  .painel-boas-vindas h1 {
+    @apply mt-1 text-2xl font-bold tracking-tight text-soulup-900;
+  }
+  .painel-boas-vindas .botao-secundario {
+    @apply text-xs;
+  }
+  .painel-banner {
+    @apply relative mb-6 overflow-hidden rounded-3xl p-7 text-white;
+    background: linear-gradient(110deg, #341044, #73208e 63%, #a63798);
+  }
+  .painel-banner::after {
+    content: "";
+    position: absolute;
+    width: 26rem;
+    height: 26rem;
+    right: -9rem;
+    top: -10rem;
+    border: 3rem solid #ffffff06;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .painel-banner-texto {
+    @apply relative z-10 max-w-lg;
+  }
+  .painel-banner-rotulo {
+    @apply text-[10px] font-semibold uppercase tracking-[0.16em] text-white/80;
+  }
+  .painel-banner h2 {
+    @apply mt-4 text-xl font-semibold tracking-tight tablet:text-[27px];
+    line-height: 1.45;
+  }
+  .painel-banner-texto > p:not(.painel-banner-rotulo) {
+    @apply mt-3 max-w-sm text-[13px] leading-6 text-white/75;
+  }
+  .painel-banner-link {
+    @apply mt-5 inline-flex min-h-9 items-center gap-4 rounded-xl bg-white px-4 py-2 text-[11px] font-bold text-soulup-900;
+  }
+  .painel-banner-link .icone {
+    width: 1rem;
+    height: 1rem;
+  }
+  .painel-banner-arte {
+    @apply absolute right-[9%] bottom-8 hidden h-40 w-32 rotate-[-12deg] flex-col items-center justify-center rounded-3xl border border-white/20 bg-white/10;
+  }
+  .painel-banner-arte > .icone {
+    @apply mb-4 text-white/80;
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+  .painel-banner-arte span {
+    @apply mt-2 h-1.5 w-16 rounded-full bg-white/25;
+  }
+  .painel-banner-arte span:last-child {
+    @apply w-10 self-start ml-8;
+  }
+  .painel-indicadores {
+    @apply grid gap-4 tablet:grid-cols-3;
+  }
+  .painel-indicador-topo {
+    @apply flex items-center justify-between gap-3 text-xs text-slate-600;
+  }
+  .indicador-icone {
+    @apply flex size-8 shrink-0 items-center justify-center rounded-xl bg-soulup-100/60 text-soulup-700;
+  }
+  .indicador-icone .icone {
+    width: 1rem;
+    height: 1rem;
+  }
+  .indicador-rosa {
+    @apply bg-pink-50 text-soulup-500;
+  }
+  .indicador-verde {
+    @apply bg-emerald-50 text-emerald-600;
+  }
+  .painel-numero {
+    @apply mt-4 flex flex-wrap items-baseline gap-1 text-[28px] font-bold tracking-tight text-soulup-900;
+  }
+  .painel-numero > span {
+    @apply text-sm font-normal text-slate-500;
+  }
+  .painel-legenda {
+    @apply mt-2 text-[11px] leading-5 text-slate-500;
+  }
+  .painel-legenda a {
+    @apply font-medium text-soulup-700;
+  }
+  .painel-grade {
+    @apply mt-6 grid gap-6;
+  }
+  .painel-periodo {
+    @apply rounded-md bg-slate-50 px-2 py-1 text-[10px] text-slate-500;
+  }
+  .app-conteudo .titulo-cartao {
+    @apply text-[13px] font-bold text-soulup-900;
+  }
+  .app-conteudo .painel-titulo p {
+    @apply text-slate-600;
+  }
+  .app-conteudo .link-historico {
+    @apply inline-flex items-center gap-1 text-[11px];
+  }
+  .link-historico .icone {
+    width: 0.9rem;
+    height: 0.9rem;
+  }
+  .app-conteudo .grafico-semana {
+    @apply mt-7 gap-3 border-b border-slate-100 pb-2;
+  }
+  .app-conteudo .grafico-base {
+    @apply h-36 max-w-10;
+  }
+  .app-conteudo .grafico-fundo {
+    fill: transparent;
+  }
+  .app-conteudo .grafico-preenchimento {
+    fill: #e2d2ec;
+  }
+  .app-conteudo .grafico-hoje {
+    fill: var(--color-soulup-700);
+  }
+  .app-conteudo .grafico-valor {
+    @apply text-[10px] font-normal text-slate-500;
+  }
+  .app-conteudo .grafico-dia {
+    @apply text-[10px] text-slate-500;
+  }
+  .grafico-legenda {
+    @apply mt-4 text-center text-[10px] text-slate-500;
+  }
+  .painel-meta {
+    @apply mt-6 flex flex-col items-center text-center;
+  }
+  .meta-circulo {
+    @apply relative size-32;
+  }
+  .meta-circulo > svg {
+    @apply h-full w-full;
+    transform: rotate(-90deg);
+  }
+  .meta-circulo circle {
+    fill: none;
+    stroke-width: 8;
+  }
+  .meta-trilha {
+    stroke: #f1eaf6;
+  }
+  .meta-progresso {
+    stroke: var(--color-soulup-700);
+    stroke-linecap: round;
+  }
+  .meta-circulo > div {
+    @apply absolute inset-0 flex flex-col items-center justify-center;
+  }
+  .meta-circulo strong {
+    @apply text-2xl font-bold text-soulup-900;
+  }
+  .meta-circulo small {
+    @apply ml-1 text-base;
+  }
+  .meta-circulo span {
+    @apply mt-1 text-[10px] text-slate-500;
+  }
+  .meta-contagem {
+    @apply mt-4 text-sm font-bold text-soulup-900;
+  }
+  .meta-contagem span {
+    @apply font-normal text-slate-500;
+  }
+  .meta-rodape {
+    @apply mt-5 border-t border-slate-100 pt-4 text-center text-[10px] text-slate-500;
+  }
+  .painel-atividade {
+    @apply flex items-center gap-3 border-t border-slate-100 py-3;
+  }
+  .painel-atividade:first-child {
+    @apply border-0 pt-0;
+  }
+  .painel-atividade > div {
+    @apply min-w-0 flex-1;
+  }
+  .atividade-icone {
+    @apply flex size-9 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600;
+  }
+  .painel-atividade .nome-atividade {
+    @apply text-xs text-soulup-900;
+  }
+  .painel-atividade .data-registro {
+    @apply text-[10px] text-slate-500;
+  }
+  .painel-atividade .pontos-atividade {
+    @apply text-[11px];
+  }
+  .painel-proximo {
+    @apply border-soulup-100 bg-soulup-100/50;
+  }
+  .painel-proximo > .icone {
+    @apply mb-5 text-soulup-700;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  .painel-proximo h2 {
+    @apply max-w-xs text-xl font-semibold leading-relaxed text-soulup-900;
+  }
+  .painel-proximo p {
+    @apply mt-3 text-xs leading-6 text-slate-600;
+  }
+  .painel-proximo a {
+    @apply mt-6 inline-flex items-center gap-2 text-xs font-bold text-soulup-700;
+  }
+  .painel-carregando {
+    @apply mt-6;
+  }
+
+  .acesso-pagina {
+    @apply mx-auto grid w-full max-w-5xl items-center gap-10 px-6 py-12 tablet:grid-cols-2 tablet:py-16;
+  }
+  .acesso-apresentacao h1 {
+    @apply mt-6 text-3xl font-bold leading-tight tracking-tight text-soulup-900;
+  }
+  .acesso-apresentacao > p {
+    @apply mt-4 max-w-sm text-sm leading-7 text-slate-600;
+  }
+  .acesso-imagem {
+    @apply mt-6 hidden max-w-sm rounded-3xl bg-gradient-to-br from-soulup-700 to-soulup-900 p-7 tablet:block;
+  }
+  .acesso-imagem img {
+    @apply mx-auto max-h-72 w-full object-contain;
+  }
+  .acesso-cartao {
+    @apply rounded-3xl border border-slate-200/70 bg-white p-6 shadow-lg shadow-soulup-900/3 xs:p-9;
+  }
+  .acesso-simbolo {
+    @apply mb-6 inline-flex size-11 items-center justify-center rounded-xl bg-soulup-100/60 text-soulup-700;
+  }
+  .acesso-cartao h2 {
+    @apply text-xl font-bold tracking-tight text-soulup-900;
+  }
+  .acesso-subtitulo {
+    @apply mt-3 text-xs leading-6 text-slate-500;
+  }
+  .acesso-voltar {
+    @apply mt-6 block text-center text-xs text-slate-500 hover:text-soulup-700;
+  }
+}
+
+@media (min-width: 48rem) {
+  .inicio-hero {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 2rem;
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+  .inicio-imagem {
+    height: 30rem;
+  }
+  .inicio-mensagem {
+    left: -1rem;
+  }
+  .app-conteudo {
+    padding: 2.25rem;
+  }
+  .app-topo {
+    min-height: 5rem;
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
+  .app-rodape {
+    margin-left: 2.25rem;
+    margin-right: 2.25rem;
+  }
+}
+@media (min-width: 62rem) {
+  .site-menu-botao,
+  .app-menu-botao {
+    display: none;
+  }
+  .site-menu {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.2rem;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+  .site-menu-link {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.8rem;
+  }
+  .site-menu-acesso {
+    margin-left: 0.6rem;
+  }
+  .inicio-hero {
+    padding-top: 4.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .inicio-imagem {
+    height: 35rem;
+  }
+  .inicio-convite {
+    max-width: 68rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .aplicativo {
+    display: grid;
+    grid-template-columns: 15.75rem minmax(0, 1fr);
+  }
+  .app-lateral {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #e8e6ed;
+    border-bottom: 0;
+    overflow-y: auto;
+  }
+  .app-marca {
+    padding: 2rem 1.75rem;
+  }
+  .app-lateral-conteudo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding-top: 0.4rem;
+  }
+  .app-lateral-base {
+    margin-top: auto;
+    padding-top: 2.5rem;
+  }
+  .app-principal {
+    min-height: 100dvh;
+  }
+}
+@media (min-width: 75rem) {
+  .painel-grade {
+    grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
+  }
+  .painel-banner-arte {
+    display: flex;
+  }
+  .painel-banner-texto {
+    max-width: 65%;
+  }
+  .painel-banner {
+    padding: 2.25rem;
+  }
+}
+@media (max-width: 29.99rem) {
+  .inicio-mensagem {
+    padding: 0.7rem;
+    gap: 0.5rem;
+  }
+  .inicio-mensagem strong {
+    font-size: 0.6rem;
+  }
+  .inicio-mensagem p {
+    font-size: 0.55rem;
+  }
+  .app-caminho {
+    font-size: 0.65rem;
+  }
+  .app-perfil strong {
+    max-width: 5.5rem;
+    font-size: 0.65rem;
+  }
+  .painel-banner h2 br {
+    display: none;
+  }
+  .painel-numero {
+    font-size: 1.6rem;
+  }
+}
+
+/* Capas locais dos entregáveis na página Solução. */
+@layer components {
+  .solucao-capa { @apply block h-auto w-full rounded-xl; }
 }

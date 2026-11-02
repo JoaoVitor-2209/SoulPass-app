@@ -1,26 +1,27 @@
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 import { Header } from "../Header";
 import { Footer } from "../Footer";
 import { useScrollToTop } from "../../hooks/useScrollToTop";
 import { useWatsonAssistant } from "../../hooks/useWatsonAssistant";
 
 /**
- * Layout raiz da SPA: cabeçalho e rodapé fixos, com o conteúdo de cada
- * rota renderizado no <Outlet />. É o "element" da rota-pai no router
- * (createBrowserRouter), então também é o lugar certo para hooks que
- * devem rodar uma única vez para toda a aplicação (scroll e chatbot).
+ * Layout raiz da SPA: as páginas públicas usam o cabeçalho do site.
+ * O painel tem sua própria navegação lateral e seu rodapé. Scroll e
+ * chatbot continuam compartilhados por todas as rotas no mesmo Outlet.
  */
 export default function Layout() {
   useScrollToTop();
   useWatsonAssistant();
+  const { pathname } = useLocation();
+  const painel = pathname === "/app" || pathname.startsWith("/app/");
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Header />
+      {!painel && <Header />}
       <main className="flex-1">
         <Outlet />
       </main>
-      <Footer />
+      {!painel && <Footer />}
     </div>
   );
 }
