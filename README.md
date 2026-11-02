@@ -23,7 +23,7 @@ A base é o projeto existente da equipe, com o padrão das aulas: componentes fu
 | Repositório de origem da equipe | https://github.com/SoulPass-1TDSPJ/SoulPass-app |
 | Backend Java | https://github.com/matheusfa08/soulpass_api |
 | API publicada | https://soulpass-api.onrender.com |
-| Deploy deste front na Vercel | **PENDENTE: publicar esta versão e inserir a URL aqui.** |
+| Deploy deste front na Vercel | https://soulpass-roan.vercel.app |
 | Vídeo desta Sprint 4 no YouTube | https://youtu.be/m-VH4_5tVMo |
 
 
