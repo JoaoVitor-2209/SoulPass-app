@@ -20,6 +20,8 @@ import NotFound from "./routes/NotFound";
 import { AuthProvider } from "./context/AuthContext";
 import LayoutPainel from "./components/Painel/LayoutPainel";
 import Painel from "./routes/Painel";
+import Caminhadas from "./routes/Caminhadas";
+import CaminhadaDetalhe from "./routes/CaminhadaDetalhe";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +35,8 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
         children: [
           { index: true, element: <Painel /> },
+          { path: "caminhadas", element: <Caminhadas /> },
+          { path: "caminhadas/:id", element: <CaminhadaDetalhe /> },
           { path: "*", element: <NotFound /> },
         ],
       },
