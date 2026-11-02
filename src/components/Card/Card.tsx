@@ -12,9 +12,10 @@ interface CardProps {
 export default function Card({ children, className = "" }: CardProps) {
   return (
     <div
-      className={`rounded-2xl border border-soulup-100 bg-white p-6 shadow-sm shadow-soulup-900/5 ${className}`}
+      className={`cartao-padrao ${className}`}
     >
       {children}
     </div>
   );
 }
+
