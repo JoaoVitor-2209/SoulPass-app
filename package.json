@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
+    "test": "node --test scripts/*.test.mjs",
     "dev:certificados": "node --use-system-ca ./node_modules/vite/bin/vite.js"
   },
   "dependencies": {
