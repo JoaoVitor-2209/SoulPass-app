@@ -1052,3 +1052,8 @@
     font-size: 1.6rem;
   }
 }
+
+/* Capas locais dos entregáveis na página Solução. */
+@layer components {
+  .solucao-capa { @apply block h-auto w-full rounded-xl; }
+}

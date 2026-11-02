@@ -1,10 +1,10 @@
 import type { Entregavel } from "../types";
-import imgFrontend from "../assets/pagina2/img-frontend.png";
-import imgJava from "../assets/pagina2/img-java.png";
-import imgDatabase from "../assets/pagina2/img-database.png";
-import imgPython from "../assets/pagina2/img-python.png";
-import imgChatbot from "../assets/pagina2/img-chatbot.png";
-import imgBusiness from "../assets/pagina2/img-business.png";
+import imgFrontend from "../assets/solucao/front-end.png";
+import imgJava from "../assets/solucao/java.png";
+import imgDatabase from "../assets/solucao/banco-de-dados.png";
+import imgPython from "../assets/solucao/python.png";
+import imgChatbot from "../assets/solucao/chatbot-ml.png";
+import imgBusiness from "../assets/solucao/pitch.png";
 
 // Entregáveis do projeto original, atualizados com os vídeos e as informações da Sprint 4.
 export const entregaveis: Entregavel[] = [

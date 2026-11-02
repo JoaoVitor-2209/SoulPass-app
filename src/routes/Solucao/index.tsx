@@ -20,7 +20,7 @@ export default function Solucao() {
         imagemAlt="Ônibus SoulPass"
         acoes={<LinkButton to="/videos">Assistir vídeos</LinkButton>}
       >
-        <p>Veja o que foi desenvolvido em cada disciplina do Challenge FIAP 2026, 1º Semestre.</p>
+        <p>Veja o que foi desenvolvido em cada disciplina do Challenge FIAP 2026, Sprint 4 do 2º Semestre.</p>
       </PageHero>
 
       <section className="mx-auto max-w-6xl px-6 py-14 tablet:py-20">
@@ -31,8 +31,8 @@ export default function Solucao() {
               to={`/solucao/${item.id}`}
               className="group flex flex-col gap-4 rounded-2xl border border-soulup-100 bg-white p-6 shadow-sm shadow-soulup-900/5 transition-shadow hover:shadow-md"
             >
+              <img src={item.imagem} alt="" className="solucao-capa" width="1672" height="941" loading="lazy" decoding="async" aria-hidden="true" />
               <div className="flex items-center gap-3">
-                <img src={item.imagem} alt="" className="h-12 w-12 object-contain" aria-hidden="true" />
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-soulup-500">
                     {item.emoji} {item.materia}
@@ -51,3 +51,4 @@ export default function Solucao() {
     </>
   );
 }
+
