@@ -52,3 +52,9 @@ remota, publicada no Render; os testes de serviço usam respostas controladas.
   incluindo os seis arquivos de capa enviados pela equipe.
 - Publicação na Vercel e validação completa com conta autorizada na API ainda
   precisam ser realizadas. O README mantém essas pendências explícitas.
+
+## Limpeza final
+
+A branch `hotfix/remover-auth-local` remove o serviço demonstrativo antigo de
+cadastro local, que já não era importado pelas telas integradas à API Java.
+O build foi conferido novamente após a remoção.
