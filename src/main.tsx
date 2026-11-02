@@ -17,12 +17,25 @@ import Login from "./routes/Login";
 import Cadastro from "./routes/Cadastro";
 import NotFound from "./routes/NotFound";
 
+import { AuthProvider } from "./context/AuthContext";
+import LayoutPainel from "./components/Painel/LayoutPainel";
+import Painel from "./routes/Painel";
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     errorElement: <NotFound />,
     children: [
+      {
+        path: "app",
+        element: <LayoutPainel />,
+        errorElement: <NotFound />,
+        children: [
+          { index: true, element: <Painel /> },
+          { path: "*", element: <NotFound /> },
+        ],
+      },
       { index: true, element: <Home /> },
       { path: "sobre", element: <Sobre /> },
       { path: "faq", element: <Faq /> },
@@ -41,6 +54,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 );

@@ -53,9 +53,12 @@ export interface LoginFormValues {
 /** Payload validado do formulário de cadastro. */
 export interface CadastroFormValues {
   nome: string;
+  idade: number;
+  cpf: string;
   email: string;
   senha: string;
   confirmarSenha: string;
 }
 
 export type FormStatus = "idle" | "success" | "error";
+
